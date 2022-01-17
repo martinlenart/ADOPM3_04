@@ -14,8 +14,9 @@ namespace ADOPM3_04_10
                  { "rtf", "wordpad.exe" }};
 
             foreach (var e in openWith) Console.WriteLine($"Key: {e.Key} Value: {e.Value}"); // ...Key: rtf Value: wordpad.exe
-            
+
             //openWith.Add("rtf", "wordpad.exe"); // Exception
+            Console.WriteLine(openWith["rtf"]);
             openWith["rtf"] = "word.exe"; // Value is now updated
             Console.WriteLine();
             foreach (var e in openWith) Console.WriteLine($"Key: {e.Key} Value: {e.Value}"); // ...Key: rtf Value: word.exe

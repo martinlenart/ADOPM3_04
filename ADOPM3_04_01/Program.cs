@@ -23,6 +23,7 @@ namespace ADOPM3_04_01
             foreach (char c in "beer")
                 Console.WriteLine(c); // b, e, e, r,
 
+            Console.WriteLine();
             //Same as above mor more explicit
             using (var enumerator = "beer".GetEnumerator())
                 while (enumerator.MoveNext())
@@ -31,16 +32,23 @@ namespace ADOPM3_04_01
                     Console.WriteLine(element); // b, e, e, r,
                 }
 
+            Console.WriteLine();
                //enumerate an enum
             foreach (Days day in Enum.GetValues(typeof(Days)))
                 Console.WriteLine($"{day} = {(int)day:X4}"); // None = 0000 ... Weekend = 0060
 
+            Console.WriteLine();
+            foreach (Days day in typeof(Days).GetEnumValues())
+                Console.WriteLine($"{day} = {(int)day:X4}"); // None = 0000 ... Weekend = 0060
+
+            Console.WriteLine();
             //enumerate  an array
             int[] array2 = new int[] { 1, 3, 5, 7, 9 };
             int[] array3 = Array.FindAll<int>(array2, x => x > 3);
 
             foreach (int i in array3)
                 Console.WriteLine(i); // 5, 7, 9
+            
         }
     }
 }

@@ -5,15 +5,23 @@ namespace ADOPM3_04_05
 {
     class Program
     {
-		public class Rectangle : IEquatable<Rectangle>
+		public class Rectangle : IEquatable<Rectangle>, IComparable<Rectangle>
 		{
 			public string Color { get; set; }
 			public int Height { get; set; }
 			public int Width { get; set; }
 
 			public bool Equals(Rectangle other) => (Height, Width, Color) == (other.Height, other.Width, other.Color);
-			public override int GetHashCode() => (Width, Height, Color).GetHashCode();  //Needed to implement as part of IEquatable
-			public override bool Equals(object obj) => Equals(obj as Rectangle); //Needed to implement as part of IEquatable
+
+			#region Needed to implement as part of IEquatable
+			public override int GetHashCode() => (Width, Height, Color).GetHashCode();  
+			public override bool Equals(object obj) => Equals(obj as Rectangle); 
+			#endregion
+
+			public int CompareTo(Rectangle other)
+            {
+				return this.Color.CompareTo(other.Color);
+            }
 		}
 		public class AreaComparer : Comparer<Rectangle>
 		{
@@ -31,7 +39,15 @@ namespace ADOPM3_04_05
 			Console.WriteLine(r1 == r2); // False
 			Console.WriteLine(r1.Equals(r2)); // True
 
-			var d = new SortedList<Rectangle,string>(new AreaComparer());
+            Console.WriteLine();
+			var d = new SortedList<Rectangle, string>();
+			d[r1] = "Rectange1"; d[r2] = "Rectange2"; d[r3] = "Rectange3"; d[r4] = "Rectange4"; d[r5] = "Rectange5";
+			Console.WriteLine(d.Count); // 3
+			foreach (string s in d.Values)
+				Console.WriteLine(s); // Rectangle 4, 3, 5
+
+            Console.WriteLine();
+			d = new SortedList<Rectangle,string>(new AreaComparer());
 			d[r1] = "Rectange1"; d[r2] = "Rectange2"; d[r3] = "Rectange3"; d[r4] = "Rectange4"; d[r5] = "Rectange5";
 			Console.WriteLine(d.Count); // 4
 			foreach (string s in d.Values)

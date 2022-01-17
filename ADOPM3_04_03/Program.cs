@@ -46,6 +46,7 @@ namespace ADOPM3_04_03
 			foreach (int element in new EnumerableSimple())
 				Console.WriteLine(element); // 1, 2, 3
 
+            Console.WriteLine();
 			foreach (int i in new EnumerableFromScratch())
 				Console.WriteLine(i);
 		}
