@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ADOPM3_04_05
 {
@@ -15,12 +16,41 @@ namespace ADOPM3_04_05
 
 			#region Needed to implement as part of IEquatable
 			public override int GetHashCode() => (Width, Height, Color).GetHashCode();  
-			public override bool Equals(object obj) => Equals(obj as Rectangle); 
+			public override bool Equals(object obj) => Equals(obj as Rectangle);
 			#endregion
+
+			public static bool operator == (Rectangle r1, Rectangle r2) => r1.Equals(r2);
+			public static bool operator !=(Rectangle r1, Rectangle r2) => !r1.Equals(r2);
+
+			public Rectangle SetFavoriteColor(string name)
+            {
+				if (name == "Martin")
+					Color = "Blue";
+				else if (name == "Amanda")
+					Color = "Red";
+
+				return this;
+            }
+			public Rectangle MakeSquare(int Height)
+            {
+				this.Height = this.Width = Height;
+				return this;
+            }
 
 			public int CompareTo(Rectangle other)
             {
-				return this.Color.CompareTo(other.Color);
+				if (this.Color != other.Color)
+					return this.Color.CompareTo(other.Color);
+				else
+					return this.Height.CompareTo(other.Height);
+            }
+
+			public Rectangle() { }
+			public Rectangle (Rectangle src)
+            {
+				this.Color = src.Color;
+				this.Height = src.Height;
+				this.Width = src.Width;
             }
 		}
 		public class AreaComparer : Comparer<Rectangle>
@@ -31,6 +61,11 @@ namespace ADOPM3_04_05
 		static void Main(string[] args)
 		{
 			Rectangle r1 = new Rectangle() { Height = 50, Width = 100, Color = "red" };
+
+			r1.SetFavoriteColor("Amanda").MakeSquare(100);
+
+
+
 			Rectangle r2 = new Rectangle() { Height = 50, Width = 100, Color = "red" };
 			Rectangle r3 = new Rectangle() { Height = 70, Width = 20, Color = "red" };
 			Rectangle r4 = new Rectangle() { Height = 200, Width = 50, Color = "blue" };
@@ -39,7 +74,19 @@ namespace ADOPM3_04_05
 			Console.WriteLine(r1 == r2); // False
 			Console.WriteLine(r1.Equals(r2)); // True
 
-            Console.WriteLine();
+
+			var r6 = r1;					//shallow copy
+			var r7 = new Rectangle(r1);     //Deep copy
+
+			//
+			Rectangle[] RectArray1 = new Rectangle[] { r1, r2, r3, r4, r5 };
+			Rectangle[] RectArray2 = (Rectangle[]) RectArray1.Clone();			//shallow copy
+
+			var RectArray3 = RectArray1.Select(item => new Rectangle(item));	//deep copy
+
+
+
+			Console.WriteLine();
 			var d = new SortedList<Rectangle, string>();
 			d[r1] = "Rectange1"; d[r2] = "Rectange2"; d[r3] = "Rectange3"; d[r4] = "Rectange4"; d[r5] = "Rectange5";
 			Console.WriteLine(d.Count); // 3
