@@ -25,9 +25,11 @@ namespace ADOPM3_04_02
         {
 			foreach (int fib in Fibs(15))
 				Console.WriteLine(fib);
-			
+
+            Console.WriteLine();
 			foreach (int fib in EvenNumbersOnly(Fibs(15)))
 				Console.WriteLine(fib);
+			
 		}
 	}
 	//Exercise:
