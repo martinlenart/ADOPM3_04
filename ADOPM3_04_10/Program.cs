@@ -12,9 +12,13 @@ namespace ADOPM3_04_10
             FavoriteBands.Add("ACDC", new List<string>() { "Fly on the Wall", "TnT" });
             FavoriteBands.Add("PinkFloyd", new List<string>() { "Dark side of the moon", "The Wall", "Final Cut" });
 
-            foreach(var album in FavoriteBands["ACDC"])
+            foreach (var performer in FavoriteBands.Keys)
             {
-                Console.WriteLine(album);
+                Console.WriteLine($"\n{performer} albums:");
+                foreach (var album in FavoriteBands[performer])
+                {
+                    Console.WriteLine(album);
+                }
             }
 
             Console.WriteLine(FavoriteBands.ContainsKey("Abba"));
