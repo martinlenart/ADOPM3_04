@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ADOPM3_04_10
 {
@@ -7,25 +8,39 @@ namespace ADOPM3_04_10
     {
         static void Main(string[] args)
         {
-            Dictionary<string, string> openWith = new Dictionary<string, string>()
-                {{ "txt", "notepad.exe" },
-                 { "bmp", "paint.exe" },
-                 { "dib", "paint.exe" },
-                 { "rtf", "wordpad.exe" }};
+            Dictionary<string, List<string>> FavoriteBands = new Dictionary<string, List<string>>();
+            FavoriteBands.Add("ACDC", new List<string>() { "Fly on the Wall", "TnT" });
+            FavoriteBands.Add("PinkFloyd", new List<string>() { "Dark side of the moon", "The Wall", "Final Cut" });
 
-            foreach (var e in openWith) Console.WriteLine($"Key: {e.Key} Value: {e.Value}"); // ...Key: rtf Value: wordpad.exe
+            foreach(var album in FavoriteBands["ACDC"])
+            {
+                Console.WriteLine(album);
+            }
 
-            //openWith.Add("rtf", "wordpad.exe"); // Exception
-            Console.WriteLine(openWith["rtf"]);
-            openWith["rtf"] = "word.exe"; // Value is now updated
-            Console.WriteLine();
-            foreach (var e in openWith) Console.WriteLine($"Key: {e.Key} Value: {e.Value}"); // ...Key: rtf Value: word.exe
+            Console.WriteLine(FavoriteBands.ContainsKey("Abba"));
+            var myAlbums = FavoriteBands.ToList();
 
-            Console.WriteLine(openWith.ContainsKey("txt")); // true
-            Console.WriteLine(openWith.ContainsValue("paint.exe")); // true
+            /*
+        Dictionary<string, string> openWith = new Dictionary<string, string>()
+            {{ "txt", "notepad.exe" },
+             { "bmp", "paint.exe" },
+             { "dib", "paint.exe" },
+             { "rtf", "wordpad.exe" }};
 
-            new List<string>(openWith.Keys).ForEach(k => Console.WriteLine(k)); // txt, bmp, dib, rtf
-            new List<string>(openWith.Values).ForEach(v => Console.WriteLine(v)); // notepad.exe, ..., word.exe
+        foreach (var e in openWith) Console.WriteLine($"Key: {e.Key} Value: {e.Value}"); // ...Key: rtf Value: wordpad.exe
+
+        //openWith.Add("rtf", "wordpad.exe"); // Exception
+        Console.WriteLine(openWith["rtf"]);
+        openWith["rtf"] = "word.exe"; // Value is now updated
+        Console.WriteLine();
+        foreach (var e in openWith) Console.WriteLine($"Key: {e.Key} Value: {e.Value}"); // ...Key: rtf Value: word.exe
+
+        Console.WriteLine(openWith.ContainsKey("txt")); // true
+        Console.WriteLine(openWith.ContainsValue("paint.exe")); // true
+
+        new List<string>(openWith.Keys).ForEach(k => Console.WriteLine(k)); // txt, bmp, dib, rtf
+        new List<string>(openWith.Values).ForEach(v => Console.WriteLine(v)); // notepad.exe, ..., word.exe
+        */
         }
     }
 

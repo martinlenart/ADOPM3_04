@@ -26,9 +26,16 @@ namespace ADOPM3_04_08
                 new Rectangle(){ Color = "pink", Height = 45, Width =15 }};
 
             //Sort and print the list using Lambda Expression
-            list1.Sort((r1, r2) => r1.Area.CompareTo(r2.Area));
-            list1.ForEach(r => Console.WriteLine(r.Color)); // red, blue, pink, white, yellow
+            list1.Sort((r1, r2) =>
+            {
+                if (r1.Area != r2.Area)
+                    return r1.Area.CompareTo(r2.Area);
+                return r1.Color.CompareTo(r2.Color);
+            }
+            );
 
+            list1.ForEach(r => Console.WriteLine($"Area: {r.Area}, Color:{r.Color}")); // red, blue, pink, white, yellow
+            
             //Queue<T>
             Queue<Rectangle> queue1 = new Queue<Rectangle>();
             queue1.Enqueue(new Rectangle() { Color = "red", Height = 10, Width = 20 });
@@ -45,6 +52,7 @@ namespace ADOPM3_04_08
             
             Console.WriteLine(queue1.Contains(new Rectangle() { Color = "yellow", Height = 100, Width = 100 })); //true
 
+            
             //Stack<T>
             Stack<Rectangle> stack1 = new Stack<Rectangle>();
             stack1.Push(new Rectangle() { Color = "red", Height = 10, Width = 20 });
@@ -58,6 +66,7 @@ namespace ADOPM3_04_08
 
             r2 = stack1.Peek();
             Console.WriteLine(r2.Color); // white
+            
         }
     }
 

@@ -22,21 +22,6 @@ namespace ADOPM3_04_05
 			public static bool operator == (Rectangle r1, Rectangle r2) => r1.Equals(r2);
 			public static bool operator !=(Rectangle r1, Rectangle r2) => !r1.Equals(r2);
 
-			public Rectangle SetFavoriteColor(string name)
-            {
-				if (name == "Martin")
-					Color = "Blue";
-				else if (name == "Amanda")
-					Color = "Red";
-
-				return this;
-            }
-			public Rectangle MakeSquare(int Height)
-            {
-				this.Height = this.Width = Height;
-				return this;
-            }
-
 			public int CompareTo(Rectangle other)
             {
 				if (this.Color != other.Color)
@@ -61,10 +46,6 @@ namespace ADOPM3_04_05
 		static void Main(string[] args)
 		{
 			Rectangle r1 = new Rectangle() { Height = 50, Width = 100, Color = "red" };
-
-			r1.SetFavoriteColor("Amanda").MakeSquare(100);
-
-
 
 			Rectangle r2 = new Rectangle() { Height = 50, Width = 100, Color = "red" };
 			Rectangle r3 = new Rectangle() { Height = 70, Width = 20, Color = "red" };
