@@ -43,12 +43,15 @@ namespace ADOPM3_04_03
     {
         static void Main(string[] args)
         {
-			foreach (int element in new EnumerableSimple())
+			var myClass = new EnumerableSimple();
+			foreach (int element in myClass)
 				Console.WriteLine(element); // 1, 2, 3
 
+			/*
             Console.WriteLine();
 			foreach (int i in new EnumerableFromScratch())
 				Console.WriteLine(i);
+			*/
 		}
 	}
 

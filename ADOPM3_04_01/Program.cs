@@ -23,6 +23,7 @@ namespace ADOPM3_04_01
             foreach (char c in "beer")
                 Console.WriteLine(c); // b, e, e, r,
 
+            
             Console.WriteLine();
             //Same as above mor more explicit
             using (var enumerator = "beer".GetEnumerator())
@@ -32,6 +33,7 @@ namespace ADOPM3_04_01
                     Console.WriteLine(element); // b, e, e, r,
                 }
 
+            
             Console.WriteLine();
                //enumerate an enum
             foreach (Days day in Enum.GetValues(typeof(Days)))
@@ -48,7 +50,6 @@ namespace ADOPM3_04_01
 
             foreach (int i in array3)
                 Console.WriteLine(i); // 5, 7, 9
-            
         }
     }
 }
