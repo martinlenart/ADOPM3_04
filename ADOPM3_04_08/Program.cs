@@ -11,6 +11,7 @@ namespace ADOPM3_04_08
             public int Height { get; set; }
             public int Width { get; set; }
             public int Area => Height * Width;
+
             public bool Equals(Rectangle other) => (Height, Width, Color) == (other.Height, other.Width, other.Color);
             public override int GetHashCode() => (Width, Height, Color).GetHashCode();  //Needed to implement as part of IEquatable
             public override bool Equals(object obj) => Equals(obj as Rectangle); //Needed to implement as part of IEquatable
@@ -35,6 +36,10 @@ namespace ADOPM3_04_08
             );
 
             list1.ForEach(r => Console.WriteLine($"Area: {r.Area}, Color:{r.Color}")); // red, blue, pink, white, yellow
+
+            var list2 = list1.ConvertAll(r => r.Area);
+            list2.ForEach(r => Console.WriteLine(r));
+
             
             //Queue<T>
             Queue<Rectangle> queue1 = new Queue<Rectangle>();
@@ -46,9 +51,12 @@ namespace ADOPM3_04_08
 
             Rectangle r1 = queue1.Dequeue();
             Console.WriteLine(r1.Color); // red
-            
-            r1 = queue1.Peek();
+
+            r1 = queue1.Dequeue();
             Console.WriteLine(r1.Color); // blue
+
+            r1 = queue1.Peek();
+            Console.WriteLine(r1.Color); // yellow
             
             Console.WriteLine(queue1.Contains(new Rectangle() { Color = "yellow", Height = 100, Width = 100 })); //true
 
@@ -64,9 +72,12 @@ namespace ADOPM3_04_08
             Rectangle r2 = stack1.Pop();
             Console.WriteLine(r2.Color); // pink
 
-            r2 = stack1.Peek();
+            r2 = stack1.Pop();
             Console.WriteLine(r2.Color); // white
-            
+
+            r2 = stack1.Peek();
+            Console.WriteLine(r2.Color); // yellow
+           
         }
     }
 

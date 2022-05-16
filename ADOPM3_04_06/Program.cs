@@ -7,29 +7,6 @@ namespace ADOPM3_04_06
     {
         static void Main(string[] args)
         {
-            // Sort such that odd numbers come first using Lambda Expression
-            int[] numbers = { 5,4,3,2,1 };
-            
-            Array.Sort(numbers);
-            foreach (int i in numbers)
-                Console.WriteLine(i);
-
-
-            Array.Sort(numbers, (x, y) =>
-            {
-                if (x % 2 == y % 2)
-                    return 0;
-                else if (x % 2 == 1)
-                    return -1;
-                else
-                    return 1;
-            });
-            
-            Console.WriteLine($"Odd number first {numbers.Rank}-dimensional array"); //Odd number first 1-dimensional array
-            foreach (int i in numbers)
-                Console.WriteLine(i); //1,3,5,2,4
-
-            /*
             StringBuilder[] builders = new StringBuilder[5];
             builders[0] = new StringBuilder("builder0");
             builders[1] = new StringBuilder("builder1");
@@ -47,8 +24,7 @@ namespace ADOPM3_04_06
             int?[] builder_lengths = Array.ConvertAll<StringBuilder, int?>(builders2, sb => sb?.Length);
             foreach (int? i in builder_lengths)
                 Console.WriteLine(i); //8, 8, 55
-            */
-        }
+         }
     }
 
     //Exercises:
