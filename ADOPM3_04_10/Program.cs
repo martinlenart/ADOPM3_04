@@ -8,10 +8,18 @@ namespace ADOPM3_04_10
     {
         static void Main(string[] args)
         {
-            Dictionary<string, List<string>> FavoriteBands = new Dictionary<string, List<string>>();
-            FavoriteBands.Add("ACDC", new List<string>() { "Fly on the Wall", "TnT" });
-            FavoriteBands.Add("PinkFloyd", new List<string>() { "Dark side of the moon", "The Wall", "Final Cut" });
 
+            Dictionary<string, List<string>> FavoriteBands = new Dictionary<string, List<string>>();
+
+            FavoriteBands.Add("ACDC", new List<string>() { "Fly on the Wall", "TnT", "For those about to Rock" });
+            FavoriteBands.Add("PinkFloyd", new List<string>() { "Dark side of the moon", "The Wall", "Final Cut" });
+            FavoriteBands.Add("Bob Dylan", new List<string>() { "Infidels" });
+
+            var l = FavoriteBands["ACDC"];
+            l.ForEach(item => Console.WriteLine(item));
+
+
+            
             foreach (var performer in FavoriteBands.Keys)
             {
                 Console.WriteLine($"\n{performer} albums:");
@@ -21,8 +29,10 @@ namespace ADOPM3_04_10
                 }
             }
 
+            
             Console.WriteLine(FavoriteBands.ContainsKey("Abba"));
             var myAlbums = FavoriteBands.ToList();
+            
         }
     }
 
