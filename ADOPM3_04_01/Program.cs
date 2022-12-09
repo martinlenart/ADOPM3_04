@@ -49,7 +49,9 @@ namespace ADOPM3_04_01
             int[] array3 = Array.FindAll<int>(array2, x => x > 3);
 
             foreach (int i in array3)
+            {
                 Console.WriteLine(i); // 5, 7, 9
+            }
         }
     }
 }

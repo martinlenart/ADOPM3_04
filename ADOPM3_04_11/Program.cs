@@ -23,12 +23,18 @@ namespace ADOPM3_04_11
                 new Rectangle(){ Color = "red", Height = 10, Width = 20 },
                 new Rectangle(){ Color = "blue", Height = 10, Width = 20 } };
 
-            //Sort and print the list using Lambda Expression
-            list1.Sort((r1, r2) => r1.Area.CompareTo(r2.Area));
-            list1.ForEach(r => Console.WriteLine(r.Color)); // red, blue
 
+
+            //Sort and print the list using Lambda Expression
+            list1.Add(new Rectangle() { Color = "pink", Height = 5, Width = 5 });
+            list1.Sort((r1, r2) => r1.Area.CompareTo(r2.Area));
+            list1.ForEach(r => Console.WriteLine(r.Color)); // pink, red, blue
+
+
+            /*
             ReadOnlyCollection<Rectangle> readonly_list1 = new ReadOnlyCollection<Rectangle>(list1);
             foreach (Rectangle r in readonly_list1) Console.WriteLine(r.Color); // red, blue
+            */
         }
     }
 

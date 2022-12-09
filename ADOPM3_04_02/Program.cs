@@ -7,6 +7,13 @@ namespace ADOPM3_04_02
     class Program
     {
 
+        static string NotAnEnumerable()
+        {
+            return "Hello";
+            return "World";
+            return "Hello again";
+        }
+        
 		static IEnumerable<string> AnEnumerable()
         {
 			yield return "Hello";
@@ -30,7 +37,7 @@ namespace ADOPM3_04_02
 				yield return words[rnd.Next(0, words.Length)] + " ";
 			}			
 		}
-		
+	/*
 		static IEnumerable<int> Fibs(int fibCount)
 		{
 			for (int i = 0, prevFib = 1, curFib = 1; i < fibCount; i++)
@@ -48,24 +55,37 @@ namespace ADOPM3_04_02
 				if ((x % 2) == 0)
 					yield return x;
 		}
+		*/
 		
 
 		static void Main(string[] args)
         {
+			Console.WriteLine(NotAnEnumerable());
+			Console.WriteLine(NotAnEnumerable());
+			Console.WriteLine(NotAnEnumerable());
+
+            Console.WriteLine();
             foreach (var item in AnEnumerable())
             {
                 Console.WriteLine(item);
             }
 
+			Console.WriteLine();
+            foreach (var item in BogusLatin())
+            {
+                Console.WriteLine(item);
+            }
+
+
+            /*
 			var list = Fibs(15).ToList();
 			foreach (var item in list)
 			{
 				Console.WriteLine(item);
 			}
+			*/
 
-
-
-			/*
+            /*
 			foreach (var item in BogusLatin())
             {
                 Console.WriteLine(item);
@@ -81,7 +101,7 @@ namespace ADOPM3_04_02
 				Console.WriteLine(fib);
 			*/
 
-		}
+        }
 	}
 	//Exercise:
 	//1.	Go through the code with the debugger step by step and explore what happens. Particular around the yield return statment.
