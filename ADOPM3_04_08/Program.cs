@@ -34,8 +34,12 @@ namespace ADOPM3_04_08
                 return r1.Color.CompareTo(r2.Color);
             }
             );
-
+            
             list1.ForEach(r => Console.WriteLine($"Area: {r.Area}, Color:{r.Color}")); // red, blue, pink, white, yellow
+            foreach (var r in list1)
+            {
+                Console.WriteLine($"Area: {r.Area}, Color:{r.Color}");
+            }
 
             var list2 = list1.ConvertAll(r => r.Area);
             list2.ForEach(r => Console.WriteLine(r));

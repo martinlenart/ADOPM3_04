@@ -70,6 +70,8 @@ namespace ADOPM3_04_02
                 Console.WriteLine(item);
             }
 
+			var list = AnEnumerable().ToList();
+
 			Console.WriteLine();
             foreach (var item in BogusLatin())
             {
