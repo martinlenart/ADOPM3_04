@@ -31,10 +31,11 @@ namespace ADOPM3_04_11
             list1.ForEach(r => Console.WriteLine(r.Color)); // pink, red, blue
 
 
-            /*
+            
             ReadOnlyCollection<Rectangle> readonly_list1 = new ReadOnlyCollection<Rectangle>(list1);
+
             foreach (Rectangle r in readonly_list1) Console.WriteLine(r.Color); // red, blue
-            */
+           
         }
     }
 

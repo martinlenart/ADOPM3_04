@@ -47,7 +47,7 @@ namespace ADOPM3_04_12
             //Add two random rectangle using the constructor
             list1.Add(new Rectangle());
             list1.Add(new Rectangle());
-
+         
             Console.WriteLine($"Rectangles in a {list1.GetType().Name}:");
             foreach (var item in list1)
                 Console.WriteLine(item);
@@ -101,12 +101,7 @@ namespace ADOPM3_04_12
 
             if (element != null)
                 Console.WriteLine($"Found the ZERORect in {elapsedTime.TotalMilliseconds:N0} ms. List contains {list2.Count:N0} elemnts");
-            
         }
     }
 }
-//Exercises
-//1.    Use the PlayingCard class from BOOPM3_08_04 and implement a card deck as a List<PlayingCard>. 
-//2.    Encapsulate the List<PlayingCard> in a class DeckOfCards
-//      - DeckOfCards constructor should create a new fresh deck
-//      - Write a Method that shuffles the cards
+

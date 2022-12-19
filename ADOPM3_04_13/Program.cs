@@ -53,6 +53,7 @@ namespace ADOPM3_04_13
             foreach (var item in list1)
                 Console.WriteLine(item);
 
+
             Console.WriteLine($"\nBig-O speed test:");
             const int HugeNrCreated = 1_000_000;            // takes about 1.6s on my machine
 
