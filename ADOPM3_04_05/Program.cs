@@ -26,8 +26,8 @@ namespace ADOPM3_04_05
             {
 				if (this.Color != other.Color)
 					return this.Color.CompareTo(other.Color);
-				else
-					return this.Height.CompareTo(other.Height);
+				
+				return this.Height.CompareTo(other.Height);
             }
 
 			public Rectangle() { }
