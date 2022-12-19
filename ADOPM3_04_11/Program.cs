@@ -35,11 +35,11 @@ namespace ADOPM3_04_11
             ReadOnlyCollection<Rectangle> readonly_list1 = new ReadOnlyCollection<Rectangle>(list1);
 
             foreach (Rectangle r in readonly_list1) Console.WriteLine(r.Color); // red, blue
-           
         }
     }
 
     //Exercise:
-    //1.    Inspect the methods of "readonly_list1" and try to add emelemnts or manipulate elements in the list
+    //1.    Inspect the methods of "readonly_list1" and try to add elements to the list
+    //2.    Try to manupilate an elements in readonly_list1, can you explain why this thiss still works? (hint: reference vs value types)
     //2.    Create a readonly version of the Dictionary created in Exercise 6_10
 }
