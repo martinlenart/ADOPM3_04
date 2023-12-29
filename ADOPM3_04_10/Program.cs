@@ -27,7 +27,9 @@ namespace ADOPM3_04_10
             csCar myCar = dicRegNr["YMY 789"];
             Console.WriteLine(myCar);
 
+
             //Dictionary uses HashCode for the key
+            Console.WriteLine();
             Console.WriteLine("NMN 854".GetHashCode());
             Console.WriteLine("YMY 789".GetHashCode());
 
@@ -39,6 +41,7 @@ namespace ADOPM3_04_10
             dicFavoriteBands.Add("Pink Floyd", new List<string>() { "Dark side of the moon", "The Wall", "Final Cut" });
             dicFavoriteBands.Add("Bob Dylan", new List<string>() { "Infidels", "Slow Train Comming" });
 
+            Console.WriteLine();
             var l = dicFavoriteBands["AC/DC"];
             l.ForEach(item => Console.WriteLine(item));
 
