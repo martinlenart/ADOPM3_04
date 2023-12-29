@@ -6,61 +6,76 @@ namespace ADOPM3_04_10
 {
     class Program
     {
-        class Car
+        class csCar
         {
             public int Year { get; set; }
             public string Make { get; set; }
+
+            public override string ToString() => $"Year: {Year}, Make: {Make}";
+            public override int GetHashCode() => (Year, Make).GetHashCode();
         }
+
         static void Main(string[] args)
         {
-            /*
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-
-            dic.Add("HelloGer", "Guten Morgen");
-            dic.Add("HelloEng", "Good morgning");
-            dic["HelloGer"] = "Guten Tag";
-
-            Console.WriteLine(dic["HelloGer"]);
-            Console.WriteLine(dic["HelloEng"]);
-
-            Dictionary<string, Car> dic2= new Dictionary<string, Car>();
-            dic2.Add("NMN854", new Car { Year = 2022, Make = "Volvo" });
-            dic2.Add("YMY789", new Car { Year = 2019, Make = "Suzuki" });
+            //Dictionary of cars
+            Dictionary<string, csCar> dicRegNr= new Dictionary<string, csCar>();
+            dicRegNr.Add("NMN854", new csCar { Year = 2022, Make = "Volvo" });
+            dicRegNr.Add("YMY789", new csCar { Year = 2019, Make = "Suzuki" });
             
-            Console.WriteLine(dic2["NMN854"].Make);
+            //Accessing the Dictionary
+            Console.WriteLine(dicRegNr["NMN854"].Make);
+            csCar myCar = dicRegNr["YMY789"];
+            Console.WriteLine(myCar);
 
-            Console.WriteLine("HelloGer".GetHashCode());
-            Console.WriteLine("HelloGeR".GetHashCode());
-
-            Console.WriteLine((new Car { Year = 2019, Make = "Suzuki" }).GetHashCode());
-            */
+            //Dictionary uses HashCode for the key
+            Console.WriteLine("NMN854".GetHashCode());
+            Console.WriteLine("YMY789".GetHashCode());
 
 
-            Dictionary<string, List<string>> FavoriteBands = new Dictionary<string, List<string>>();
+            //Value in Dictionary can be of any type, also a List
+            Dictionary<string, List<string>> dicFavoriteBands = new Dictionary<string, List<string>>();
 
-            FavoriteBands.Add("ACDC", new List<string>() { "Fly on the Wall", "TnT", "For those about to Rock" });
-            FavoriteBands.Add("PinkFloyd", new List<string>() { "Dark side of the moon", "The Wall", "Final Cut" });
-            FavoriteBands.Add("Bob Dylan", new List<string>() { "Infidels" });
+            dicFavoriteBands.Add("ACDC", new List<string>() { "Fly on the Wall", "TnT", "For those about to Rock" });
+            dicFavoriteBands.Add("PinkFloyd", new List<string>() { "Dark side of the moon", "The Wall", "Final Cut" });
+            dicFavoriteBands.Add("Bob Dylan", new List<string>() { "Infidels" });
 
-            var l = FavoriteBands["ACDC"];
+            var l = dicFavoriteBands["ACDC"];
             l.ForEach(item => Console.WriteLine(item));
 
 
-
-            foreach (var performer in FavoriteBands.Keys)
+            //Dictionay Keys and Values can be accessed as collections
+            foreach (var performer in dicFavoriteBands.Keys)
             {
                 Console.WriteLine($"\n{performer} albums:");
-                foreach (var album in FavoriteBands[performer])
+                foreach (var album in dicFavoriteBands[performer])
                 {
                     Console.WriteLine(album);
                 }
             }
 
-            
-            Console.WriteLine(FavoriteBands.ContainsKey("Abba"));
-            var myAlbums = FavoriteBands.ToList();
-            
+            //Fast check if a Dictionary contains a key
+            Console.WriteLine(dicFavoriteBands.ContainsKey("Abba"));
+            var myAlbums = dicFavoriteBands.ToList();
 
+
+            //Keys can also be of a complex type, because the types hash code is used
+            Dictionary<csCar, List<string>> dicSpareParts = new Dictionary<csCar, List<string>>();
+
+            dicSpareParts.Add(new csCar { Year = 2022, Make = "Volvo" },
+                new List<string>(){ "Sparepart1 for a 2020 Volvo", "Sparepart2 for a 2020 Volvo"});
+
+            dicSpareParts.Add(new csCar { Year = 2019, Make = "Suzuki" },
+                new List<string>() { "Sparepart1 for a 2019 Suzuki", "Sparepart2 for a 2019 Suzuki",
+                                     "Sparepart3 for a 2019 Suzuki", "Sparepart3 for a 2019 Suzuki"});
+
+            foreach (var car in dicSpareParts.Keys)
+            {
+                Console.WriteLine($"\nSpareparts for {car}:");
+                foreach (var parts in dicSpareParts[car])
+                {
+                    Console.WriteLine(parts);
+                }
+            }
         }
     }
 
