@@ -37,7 +37,7 @@ namespace ADOPM3_04_02
 				yield return words[rnd.Next(0, words.Length)] + " ";
 			}			
 		}
-	/*
+	
 		static IEnumerable<int> Fibs(int fibCount)
 		{
 			for (int i = 0, prevFib = 1, curFib = 1; i < fibCount; i++)
@@ -48,7 +48,7 @@ namespace ADOPM3_04_02
 				curFib = newFib;
 			}
 		}
-		
+		/*
 		static IEnumerable<int> EvenNumbersOnly(IEnumerable<int> sequence)
 		{
 			foreach (int x in sequence)
@@ -79,13 +79,12 @@ namespace ADOPM3_04_02
             }
 
 
-            /*
-			var list = Fibs(15).ToList();
-			foreach (var item in list)
+
+			foreach (var item in Fibs(15))
 			{
 				Console.WriteLine(item);
 			}
-			*/
+			
 
             /*
 			foreach (var item in BogusLatin())
